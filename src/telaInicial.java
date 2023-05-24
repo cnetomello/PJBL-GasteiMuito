@@ -1,12 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import static javax.swing.JOptionPane.showMessageDialog;
+
 public class telaInicial extends JFrame {
 
     public static void main(String[] args) {
-        telaInicial tela = new telaInicial();
-        tela.exibir();
-    }
-    public void exibir(){
+        ArrayList<Object> infos = new ArrayList<>();
         // Criação da janela
         JFrame frame = new JFrame("GasteiMuito");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,6 +48,38 @@ public class telaInicial extends JFrame {
 
         // Exibe a janela
         frame.setVisible(true);
-    }
-}
+
+        botaoEnviar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String nome = inputNome.getText();
+                try {
+                    String renda = inputRenda.getText();
+                    if(nome.length() != 0 && renda.length() !=0) {
+                        float renda_fl = Float.parseFloat(renda);
+                        infos.add(nome);
+                        infos.add(renda_fl);
+                        System.out.println(infos);
+                    }
+                    else{
+                        showMessageDialog(null , "Os campos nome e renda sao obrigatorios");
+                    }
+                }
+                catch (NumberFormatException n){
+                    showMessageDialog(null, "A renda tem que ser um float");
+                }
+                }
+
+
+        });
+
+
+
+
+
+
+
+    }}
+
 
