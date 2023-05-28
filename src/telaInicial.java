@@ -23,6 +23,7 @@ public class telaInicial extends JFrame {
         tituloGasteimuito.setBounds(200,10,400,50);
 
         JPanel telaInicial = new JPanel();
+        telaInicial.setBackground(new Color(255, 192, 203));
         telaInicial.setLayout(null); // Layout vertical
         JLabel nomeLabel = new JLabel("Nome:");
         nomeLabel.setBounds(150, 110 , 100 ,50);
