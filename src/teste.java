@@ -99,6 +99,16 @@ class TelaSeguinte extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 300);
         frame.setLocationRelativeTo(null);
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menu1 = new JMenu("Menu");
+        JMenuItem editarInfos = new JMenuItem("Editar informações");
+        JMenuItem editarCateg = new JMenuItem("Editar categorias");
+        JMenuItem resetarInfos = new JMenuItem("Resetar informações");
+        menu1.add(editarInfos);
+        menu1.add(editarCateg);
+        menu1.add(resetarInfos);
+        menuBar.add(menu1);
+        frame.setJMenuBar(menuBar);
 
         // Criação dos componentes da tela seguinte
         JLabel label = new JLabel("Nome: " + nome + ", Renda: " + renda);
