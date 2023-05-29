@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import static javax.swing.JOptionPane.showMessageDialog;
 
 public class teste extends JFrame {
 
@@ -28,7 +27,6 @@ public class teste extends JFrame {
         tituloGasteimuito.setBounds(200, 10, 400, 50);
 
         JPanel telaInicial = new JPanel();
-        telaInicial.setBackground(new Color(255, 192, 203));
         telaInicial.setLayout(null); // Layout vertical
         JLabel nomeLabel = new JLabel("Nome:");
         nomeLabel.setBounds(150, 110, 100, 50);
@@ -75,10 +73,10 @@ public class teste extends JFrame {
                         // Fechar a tela atual
                         frame.dispose();
                     } else {
-                        showMessageDialog ( null , "Os campos nome e renda são obrigatórios");
+                        JOptionPane.showMessageDialog(null, "Os campos nome e renda são obrigatórios");
                     }
                 } catch (NumberFormatException n) {
-                    showMessageDialog(null, "A renda tem que ser um número válido");
+                    JOptionPane.showMessageDialog(null, "A renda tem que ser um número válido");
                 }
             }
         });
@@ -89,9 +87,26 @@ class TelaSeguinte extends JFrame {
     private String nome;
     private float renda;
 
+    // Campos extras
+    private JLabel despesaLabel;
+    private JTextField inputDespesa;
+    private JLabel gastoLabel;
+    private JTextField inputGasto;
+    private JLabel categoriaLabel;
+    private JComboBox<String> categoriaComboBox;
+
     public TelaSeguinte(String nome, float renda) {
         this.nome = nome;
         this.renda = renda;
+
+        // Inicialize os componentes extras
+        despesaLabel = new JLabel("Tipo de Despesa:");
+        inputDespesa = new JTextField();
+        gastoLabel = new JLabel("Valor Gasto:");
+        inputGasto = new JTextField();
+        categoriaLabel = new JLabel("Categoria:");
+        String[] categorias = {"Alimentação", "Transporte", "Lazer", "Saúde", "Outros"};
+        categoriaComboBox = new JComboBox<>(categorias);
     }
 
     public void exibir() {
@@ -100,16 +115,6 @@ class TelaSeguinte extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 300);
         frame.setLocationRelativeTo(null);
-        JMenuBar menuBar = new JMenuBar();
-        JMenu menu1 = new JMenu("Menu");
-        JMenuItem editarInfos = new JMenuItem("Editar informações");
-        JMenuItem editarCateg = new JMenuItem("Editar categorias");
-        JMenuItem resetarInfos = new JMenuItem("Resetar informações");
-        menu1.add(editarInfos);
-        menu1.add(editarCateg);
-        menu1.add(resetarInfos);
-        menuBar.add(menu1);
-        frame.setJMenuBar(menuBar);
 
         // Criação dos componentes da tela seguinte
         JLabel label = new JLabel("Nome: " + nome + ", Renda: " + renda);
@@ -117,10 +122,29 @@ class TelaSeguinte extends JFrame {
         label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setBounds(50, 100, 300, 50);
 
-        // Adiciona o componente à janela
-        frame.getContentPane().add(label);
+        // Posicionamento dos componentes extras
+        despesaLabel.setBounds(50, 150, 150, 30);
+        inputDespesa.setBounds(50, 190, 300, 30);
+        gastoLabel.setBounds(50, 230, 100, 30);
+        inputGasto.setBounds(50, 270, 300, 30);
+        categoriaLabel.setBounds(50, 310, 100, 30);
+        categoriaComboBox.setBounds(50, 350, 300, 30);
 
-        // Exibe a janela
+        // Adicione os componentes extras ao painel
+        JPanel telaSeguinte = new JPanel();
+        telaSeguinte.setLayout(null); // Layout vertical
+        telaSeguinte.add(label);
+        telaSeguinte.add(despesaLabel);
+        telaSeguinte.add(inputDespesa);
+        telaSeguinte.add(gastoLabel);
+        telaSeguinte.add(inputGasto);
+        telaSeguinte.add(categoriaLabel);
+        telaSeguinte.add(categoriaComboBox);
+
+        // Adiciona o componente à janela
+        frame.getContentPane().add(telaSeguinte);
+
+        // Exibe a janelax
         frame.setVisible(true);
     }
 }
