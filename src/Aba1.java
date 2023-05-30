@@ -4,13 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class teste extends JFrame {
-
-    public static void main(String[] args) {
-        teste tela = new teste();
-        tela.exibir();
-    }
-
+public class Aba1 extends JFrame {
     public void exibir() {
         ArrayList<Object> infos = new ArrayList<>();
         // Criação da janela
@@ -68,7 +62,7 @@ public class teste extends JFrame {
 
                         // Criar e exibir a próxima tela
                         Aba2 aba2 = new Aba2(nome, renda_fl);
-                        Aba2.exibir();
+                        aba2.exibir();
 
                         // Fechar a tela atual
                         frame.dispose();

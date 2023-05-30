@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-class Aba2 extends teste {
+class Aba2 extends Aba1 {
     private String nome;
     private float renda;
 
