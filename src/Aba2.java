@@ -13,7 +13,7 @@ class Aba2 extends Aba1 {
 
 
 
-    // Campos extras
+
     private JLabel despesaLabel;
     private JTextField inputDespesa;
     private JLabel gastoLabel;
@@ -27,7 +27,7 @@ class Aba2 extends Aba1 {
         this.nome = nome;
         this.renda = renda;
 
-        // Inicialize os componentes extras
+        // criando labels e inputs
         despesaLabel = new JLabel("Nome da Despesa:");
         inputDespesa = new JTextField();
         gastoLabel = new JLabel("Valor Gasto:");
@@ -42,14 +42,14 @@ class Aba2 extends Aba1 {
     }
 
     public void exibir() {
-        // Criação da janela da tela seguinte
+        // criando tela aba2
         JFrame frame = new JFrame("GasteiMuito");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(410, 600);
         frame.setLocationRelativeTo(null);
 
 
-        // Criação dos componentes da tela seguinte
+
         JLabel nameLabel = new JLabel("Nome: " + nome);
         nameLabel.setFont(new Font("Arial", Font.BOLD, 20));
         nameLabel.setBounds(20, 50, 350, 50);
@@ -70,7 +70,7 @@ class Aba2 extends Aba1 {
         data_gastoLabel.setBounds(50,400 , 150 ,50);
 
 
-        // Posicionamento dos componentes extras
+        // posicionando labels e inputs
         despesaLabel.setBounds(50, 150, 150, 30);
         inputDespesa.setBounds(50, 190, 300, 30);
         gastoLabel.setBounds(50, 230, 100, 30);
@@ -98,7 +98,7 @@ class Aba2 extends Aba1 {
                         infos.add(gasto);
                         informacoes.add(infos);
                         System.out.println(informacoes); // pra mostrar o armazenamento pra professora
-                        JOptionPane.showMessageDialog(null, "Informacoes salvados com sucesso.");
+                        JOptionPane.showMessageDialog(null, "Informações salvas com sucesso.");
                         inputDespesa.setText("");
                         inputGasto.setText("");
 
@@ -108,11 +108,11 @@ class Aba2 extends Aba1 {
                         JOptionPane.showMessageDialog(null, "Os campos devem estar preenchidos");
                     }
                 } catch (NumberFormatException n) {
-                    JOptionPane.showMessageDialog(null, "A renda tem que ser um número válido");
+                    JOptionPane.showMessageDialog(null, "A renda deve ser um número válido");
                 }
             }});
 
-            // Adicione os componentes extras ao painel
+            // criando panel da aba2
                 JPanel telaSeguinte = new JPanel();
         telaSeguinte.setBackground(new Color(255, 192, 203));
         telaSeguinte.setLayout(null); // Layout vertical
@@ -129,12 +129,12 @@ class Aba2 extends Aba1 {
         telaSeguinte.add(data_gastoLabel);
         telaSeguinte.add(data_gasto);
 
-            // Adiciona o componente à janela
+
         frame.getContentPane().
 
             add(telaSeguinte);
 
-            // Exibe a janelax
+            // exibindo a tela
         frame.setVisible(true);
 
     }
