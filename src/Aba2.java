@@ -66,6 +66,17 @@ class Aba2 extends Aba1 {
         botaoContinuar.setFont(new Font("Arial", Font.BOLD, 20));
         botaoContinuar.setForeground(Color.white);
         botaoContinuar.setBackground(Color.blue);
+        // adicionando a menubar
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menu1 = new JMenu("Menu");
+        JMenuItem editarInfos = new JMenuItem("Editar informações");
+        JMenuItem editarCateg = new JMenuItem("Editar categorias");
+        JMenuItem resetarInfos = new JMenuItem("Resetar informações");
+        menu1.add(editarInfos);
+        menu1.add(editarCateg);
+        menu1.add(resetarInfos);
+        menuBar.add(menu1);
+        frame.setJMenuBar(menuBar);
 
         data_gastoLabel.setBounds(50,400 , 150 ,50);
 
