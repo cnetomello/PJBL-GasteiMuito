@@ -18,7 +18,7 @@ public class Aba1 extends JFrame {
         tituloGasteimuito.setFont(new Font("Arial", Font.BOLD, 35));
         tituloGasteimuito.setAlignmentX(Component.CENTER_ALIGNMENT);
         tituloGasteimuito.setForeground(Color.red);
-        tituloGasteimuito.setBounds(200, 10, 400, 50);
+        tituloGasteimuito.setBounds(200, 50, 400, 50);
 
         JPanel telaInicial = new JPanel();
         telaInicial.setLayout(null);

@@ -45,19 +45,19 @@ class Aba2 extends Aba1 {
         // criando tela aba2
         JFrame frame = new JFrame("GasteiMuito");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(410, 600);
+        frame.setSize(410, 580);
         frame.setLocationRelativeTo(null);
 
 
 
         JLabel nameLabel = new JLabel("Nome: " + nome);
         nameLabel.setFont(new Font("Arial", Font.BOLD, 20));
-        nameLabel.setBounds(20, 50, 350, 50);
+        nameLabel.setBounds(20, 30, 350, 50);
         nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
         JLabel rendaLabel = new JLabel("Renda: " + renda);
         rendaLabel.setFont(new Font("Arial", Font.BOLD, 20));
         rendaLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        rendaLabel.setBounds(20, 80, 350, 50);
+        rendaLabel.setBounds(20, 60, 350, 50);
         JButton botaoSalvar = new JButton("Salvar");
         botaoSalvar.setFont(new Font("Arial", Font.BOLD, 20));
         botaoSalvar.setForeground(Color.white);
@@ -78,19 +78,18 @@ class Aba2 extends Aba1 {
         menuBar.add(menu1);
         frame.setJMenuBar(menuBar);
 
-        data_gastoLabel.setBounds(50,400 , 150 ,50);
-
 
         // posicionando labels e inputs
-        despesaLabel.setBounds(50, 150, 150, 30);
-        inputDespesa.setBounds(50, 190, 300, 30);
-        gastoLabel.setBounds(50, 230, 100, 30);
-        inputGasto.setBounds(50, 270, 300, 30);
-        categoriaLabel.setBounds(50, 310, 100, 30);
-        categoriaComboBox.setBounds(50, 350, 300, 30);
-        data_gasto.setBounds(50, 450 , 300,30);
-        botaoSalvar.setBounds(30,500,100,30);
-        botaoContinuar.setBounds(200,500,150,30);
+        despesaLabel.setBounds(50, 120, 150, 30);
+        inputDespesa.setBounds(50, 150, 300, 30);
+        gastoLabel.setBounds(50, 200, 100, 30);
+        inputGasto.setBounds(50, 230, 300, 30);
+        categoriaLabel.setBounds(50, 280, 100, 30);
+        categoriaComboBox.setBounds(50, 310, 300, 30);
+        data_gastoLabel.setBounds(50,360 , 150 ,30);
+        data_gasto.setBounds(50, 390 , 300,30);
+        botaoSalvar.setBounds(50,450,100,30);
+        botaoContinuar.setBounds(200,450,150,30);
 
         botaoSalvar.addActionListener(new ActionListener() {
             @Override
