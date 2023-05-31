@@ -114,6 +114,7 @@ class Aba2 extends Aba1 {
 
             // Adicione os componentes extras ao painel
                 JPanel telaSeguinte = new JPanel();
+        telaSeguinte.setBackground(new Color(255, 192, 203));
         telaSeguinte.setLayout(null); // Layout vertical
         telaSeguinte.add(nameLabel);
         telaSeguinte.add(rendaLabel);

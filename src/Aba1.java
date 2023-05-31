@@ -22,6 +22,7 @@ public class Aba1 extends JFrame {
 
         JPanel telaInicial = new JPanel();
         telaInicial.setLayout(null); // Layout vertical
+        telaInicial.setBackground(new Color(255, 192, 203));
         JLabel nomeLabel = new JLabel("Nome:");
         nomeLabel.setBounds(150, 110, 100, 50);
         JTextField inputNome = new JTextField(0);
