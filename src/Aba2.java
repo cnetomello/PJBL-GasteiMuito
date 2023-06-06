@@ -5,8 +5,9 @@ import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 
-class Aba2 extends Aba1 {
+class Aba2 extends tela {
     private String nome;
     private float renda;
     private ArrayList <ArrayList<Object>> informacoes = new ArrayList<>();
@@ -22,6 +23,7 @@ class Aba2 extends Aba1 {
     private JComboBox<String> categoriaComboBox;
     private JLabel data_gastoLabel;
     private JFormattedTextField data_gasto;
+    static Categorias c = new Categorias();
 
     public Aba2(String nome, float renda) {
         this.nome = nome;
@@ -33,8 +35,7 @@ class Aba2 extends Aba1 {
         gastoLabel = new JLabel("Valor Gasto:");
         inputGasto = new JTextField();
         categoriaLabel = new JLabel("Categoria:");
-        String[] categorias = {"Alimentação", "Transporte", "Lazer", "Saúde", "Outros"};
-        categoriaComboBox = new JComboBox<>(categorias);
+        ;
         data_gastoLabel = new JLabel("Data do Gasto:");
         DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
         data_gasto = new JFormattedTextField(df);
@@ -50,6 +51,10 @@ class Aba2 extends Aba1 {
 
 
 
+        String[] categorias = Arrays.stream(c.getCategorias().toArray())
+                .map(Object::toString)
+                .toArray(String[]::new);
+        categoriaComboBox = new JComboBox<>(categorias);
         JLabel nameLabel = new JLabel("Nome: " + nome);
         nameLabel.setFont(new Font("Arial", Font.BOLD, 20));
         nameLabel.setBounds(20, 30, 350, 50);
@@ -70,7 +75,7 @@ class Aba2 extends Aba1 {
         JMenuBar menuBar = new JMenuBar();
         JMenu menu1 = new JMenu("Menu");
         JMenuItem editarInfos = new JMenuItem("Editar informações");
-        JMenuItem editarCateg = new JMenuItem("Editar categorias");
+        JMenuItem editarCateg = new JMenuItem("Adicionar categorias");
         JMenuItem resetarInfos = new JMenuItem("Resetar informações");
         menu1.add(editarInfos);
         menu1.add(editarCateg);
@@ -90,6 +95,86 @@ class Aba2 extends Aba1 {
         data_gasto.setBounds(50, 390 , 300,30);
         botaoSalvar.setBounds(50,450,100,30);
         botaoContinuar.setBounds(200,450,150,30);
+
+
+        editarCateg.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                JFrame frame = new JFrame("GasteiMuito");
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setSize(410, 580);
+                frame.setLocationRelativeTo(null);
+                JLabel nova_categoria = new JLabel("Nova Categoria :");
+                nova_categoria.setBounds(50,250 , 200 ,30);
+                JTextField nova_cat = new JTextField();
+                nova_cat.setBounds(50,290,300,30);
+                JButton Adicionar = new JButton("Adicionar");
+                Adicionar.setFont(new Font("Arial", Font.BOLD, 15));
+                Adicionar.setForeground(Color.white);
+                Adicionar.setBackground(Color.green);
+                Adicionar.setBounds(30 , 340 , 150 , 20);
+                JButton Voltar = new JButton("Voltar");
+                Voltar.setFont(new Font("Arial", Font.BOLD, 15));
+                Voltar.setForeground(Color.white);
+                Voltar.setBackground(Color.red);
+                Voltar.setBounds(190 , 340 , 150 , 20);
+
+                Adicionar.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if(nova_cat.getText().length() ==0){
+                            JOptionPane.showMessageDialog(null, "O campo nao pode ser vazio.");
+                        }
+                        else{
+                            c.addCategorias(nova_cat.getText());
+                            System.out.println(c.getCategorias());
+                            frame.dispose();
+                            Aba2 aba2 = new Aba2(nome,renda);
+                            aba2.exibir();
+                        }
+
+
+
+
+
+                    }});
+
+                Voltar.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                       frame.dispose();
+                        Aba2 aba2 = new Aba2(nome,renda);
+                        aba2.exibir();
+
+
+
+
+
+
+                    }});
+
+
+                JPanel addCategoria = new JPanel();
+                addCategoria.setLayout(null);
+                addCategoria.add(nova_categoria);
+                addCategoria.add(nova_cat);
+                addCategoria.add(Adicionar);
+                addCategoria.add(Voltar);
+                frame.getContentPane().
+
+                        add(addCategoria);
+
+                // exibindo a tela
+                frame.setVisible(true);
+
+
+
+
+
+
+            }
+        });
 
         botaoSalvar.addActionListener(new ActionListener() {
             @Override
@@ -120,6 +205,25 @@ class Aba2 extends Aba1 {
                 } catch (NumberFormatException n) {
                     JOptionPane.showMessageDialog(null, "A renda deve ser um número válido");
                 }
+            }});
+
+        botaoContinuar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                    if(informacoes.size() == 0){
+                     try {
+                         throw new myException();
+                     }
+                catch (myException c) {
+                    JOptionPane.showMessageDialog(null, "Voce deve lancar no minimo uma despesa");
+                }}
+                else{
+                    Aba3 aba3 = new Aba3(informacoes , nome ,renda);
+                    aba3.exibir();
+                    frame.dispose();
+                }
+
             }});
 
             // criando panel da aba2

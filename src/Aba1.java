@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class Aba1 extends JFrame {
+public class Aba1 extends tela {
     public void exibir() {
         ArrayList<Object> infos = new ArrayList<>();
 
@@ -57,6 +57,7 @@ public class Aba1 extends JFrame {
                     String renda = inputRenda.getText();
                     if (nome.length() != 0 && renda.length() != 0) {
                         float renda_fl = Float.parseFloat(renda);
+
                         infos.add(nome);
                         infos.add(renda_fl);
                         System.out.println(infos);
@@ -68,6 +69,7 @@ public class Aba1 extends JFrame {
                     } else {
                         JOptionPane.showMessageDialog(null, "Os campos nome e renda são obrigatórios");
                     }
+
                 } catch (NumberFormatException n) {
                     JOptionPane.showMessageDialog(null, "A renda tem que ser um número válido");
                 }
