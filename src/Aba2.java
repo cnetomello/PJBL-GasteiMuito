@@ -3,15 +3,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 class Aba2 extends tela {
     private String nome;
     private float renda;
     private ArrayList <ArrayList<Object>> informacoes = new ArrayList<>();
-
+    private Date date = new Date();
+    private SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
+    private float total_gastos =0;
 
 
 
@@ -37,8 +42,7 @@ class Aba2 extends tela {
         categoriaLabel = new JLabel("Categoria:");
         ;
         data_gastoLabel = new JLabel("Data do Gasto:");
-        DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
-        data_gasto = new JFormattedTextField(df);
+        data_gasto = new JFormattedTextField("dd/MM/yyyy");
 
     }
 
@@ -183,27 +187,52 @@ class Aba2 extends tela {
                 String nome = inputDespesa.getText();
                 String categoria = (String) categoriaComboBox.getSelectedItem();
                 ArrayList<Object> infos = new ArrayList<>();
+
+
+
+
+
+
                 try {
+
+                    date = formatar.parse(data_gasto.getText());
                     String gasto = inputGasto.getText();
-                    if (nome.length() != 0 && gasto.length() != 0) {
+                    total_gastos += Float.parseFloat(gasto);
+                    System.out.println("Gastos Total =" + total_gastos);
+                    if (nome.length() != 0 && gasto.length() != 0 && renda >= Float.parseFloat(gasto) && total_gastos<=renda) {
 
                         float gasto_fl = Float.parseFloat(gasto);
                         infos.add(nome);
                         infos.add(categoria);
                         infos.add(gasto);
+                        infos.add(formatar.format(date));
                         informacoes.add(infos);
                         System.out.println(informacoes); // pra mostrar o armazenamento pra professora
                         JOptionPane.showMessageDialog(null, "Informações salvas com sucesso.");
                         inputDespesa.setText("");
                         inputGasto.setText("");
+                        data_gasto.setText("dd/MM/yyyy");
 
 
 
-                    } else {
+                    }
+                    else if(renda < Float.parseFloat(gasto)){
+                        JOptionPane.showMessageDialog(null, "O gasto nao pode ser maior do que a renda.");
+                        total_gastos -= Float.parseFloat(gasto);
+                    }
+                    else if(total_gastos > renda){
+                        JOptionPane.showMessageDialog(null, "O total de gastos nao podem ser maior do que a renda. Total Gastos = " +total_gastos);
+                        total_gastos -= Float.parseFloat(gasto);
+                    }
+                    else {
                         JOptionPane.showMessageDialog(null, "Os campos devem estar preenchidos");
+                        total_gastos -= Float.parseFloat(gasto);
                     }
                 } catch (NumberFormatException n) {
                     JOptionPane.showMessageDialog(null, "A renda deve ser um número válido");
+                }
+                catch (ParseException data_error){
+                    JOptionPane.showMessageDialog(null, "Data errada (dd/MM/yyyy)");
                 }
             }});
 
