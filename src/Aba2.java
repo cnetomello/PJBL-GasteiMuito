@@ -74,7 +74,6 @@ class Aba2 extends tela {
         botaoContinuar.setFont(new Font("Arial", Font.BOLD, 20));
         botaoContinuar.setForeground(Color.white);
         botaoContinuar.setBackground(Color.blue);
-
         // adicionando a menubar
         JMenuBar menuBar = new JMenuBar();
         JMenu menu1 = new JMenu("Menu");
@@ -87,8 +86,19 @@ class Aba2 extends tela {
         menuBar.add(menu1);
         frame.setJMenuBar(menuBar);
 
+        resetarInfos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Código para redirecionar para a página "aba1.java"
+                Aba1 aba1 = new Aba1();
+                aba1.exibir();
 
-        
+                // Fechar a janela atual (Aba2)
+                frame.dispose();
+            }
+        });
+
+
         // posicionando labels e inputs
         despesaLabel.setBounds(50, 120, 150, 30);
         inputDespesa.setBounds(50, 150, 300, 30);
@@ -144,6 +154,7 @@ class Aba2 extends tela {
 
 
                     }});
+
 
                 Voltar.addActionListener(new ActionListener() {
                     @Override
