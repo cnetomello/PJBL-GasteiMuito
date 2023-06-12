@@ -78,12 +78,8 @@ class Aba2 extends tela {
         // adicionando a menubar
         JMenuBar menuBar = new JMenuBar();
         JMenu menu1 = new JMenu("Menu");
-        JMenuItem editarInfos = new JMenuItem("Editar informações");
         JMenuItem editarCateg = new JMenuItem("Adicionar categorias");
-        JMenuItem resetarInfos = new JMenuItem("Resetar informações");
-        menu1.add(editarInfos);
         menu1.add(editarCateg);
-        menu1.add(resetarInfos);
         menuBar.add(menu1);
         frame.setJMenuBar(menuBar);
 
