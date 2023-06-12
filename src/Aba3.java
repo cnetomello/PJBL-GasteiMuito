@@ -100,15 +100,12 @@ public class Aba3 extends tela {
     private float renda;
     private float total;
     private Categorias c;
-
     public Aba3(ArrayList<ArrayList<Object>> informacoes, String nome, float renda,Categorias c) {
         this.informacoes = informacoes;
         this.nome = nome;
         this.renda = renda;
         this.c=c;
     }
-
-    // [0]: Nome despesa, [1]: Categoria, [2]: Valor Gasto, [3]: Data_despesa
     public float calcularTotal(ArrayList<ArrayList<Object>> infos){
        float total_gastos = 0;
         for (int i = 0; i < infos.size(); i++) {
@@ -153,8 +150,6 @@ public class Aba3 extends tela {
     }
     public void tabela_filtro(String  filtro){
 
-
-
       ArrayList<ArrayList<Object>> infos_filtro = new ArrayList<>();
         for (int i =0 ; i<informacoes.size();i++){
             if(informacoes.get(i).get(1)==filtro){
@@ -195,10 +190,6 @@ public class Aba3 extends tela {
         frame_filtro.setSize(700, 500);
         frame_filtro.setLocationRelativeTo(null);
         frame_filtro.setVisible(true);
-
-
-
-
     }
 
     public void exibir() {

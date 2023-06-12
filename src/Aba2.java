@@ -18,8 +18,6 @@ class Aba2 extends tela {
     private SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
     private float total_gastos =0;
 
-
-
     private JLabel despesaLabel;
     private JTextField inputDespesa;
     private JLabel gastoLabel;
@@ -34,7 +32,6 @@ class Aba2 extends tela {
         this.nome = nome;
         this.renda = renda;
 
-        // criando labels e inputs
         despesaLabel = new JLabel("Nome da Despesa:");
         inputDespesa = new JTextField();
         gastoLabel = new JLabel("Valor Gasto:");
@@ -43,7 +40,6 @@ class Aba2 extends tela {
         ;
         data_gastoLabel = new JLabel("Data do Gasto:");
         data_gasto = new JFormattedTextField("dd/MM/yyyy");
-
     }
 
     public void exibir() {
@@ -53,28 +49,31 @@ class Aba2 extends tela {
         frame.setSize(410, 580);
         frame.setLocationRelativeTo(null);
 
-
         String[] categorias = Arrays.stream(c.getCategorias().toArray())
                 .map(Object::toString)
                 .toArray(String[]::new);
         categoriaComboBox = new JComboBox<>(categorias);
+
         JLabel nameLabel = new JLabel("Nome: " + nome);
         nameLabel.setFont(new Font("Arial", Font.BOLD, 20));
         nameLabel.setBounds(20, 30, 350, 50);
         nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
         JLabel rendaLabel = new JLabel("Renda: " + renda);
         rendaLabel.setFont(new Font("Arial", Font.BOLD, 20));
         rendaLabel.setHorizontalAlignment(SwingConstants.CENTER);
         rendaLabel.setBounds(20, 60, 350, 50);
+
         JButton botaoSalvar = new JButton("Salvar");
         botaoSalvar.setFont(new Font("Arial", Font.BOLD, 20));
         botaoSalvar.setForeground(Color.white);
         botaoSalvar.setBackground(Color.green);
+
         JButton botaoContinuar = new JButton("Continuar");
         botaoContinuar.setFont(new Font("Arial", Font.BOLD, 20));
         botaoContinuar.setForeground(Color.white);
         botaoContinuar.setBackground(Color.blue);
-        // adicionando a menubar
+
         JMenuBar menuBar = new JMenuBar();
         JMenu menu1 = new JMenu("Menu");
         JMenuItem editarCateg = new JMenuItem("Adicionar categorias");
@@ -87,16 +86,12 @@ class Aba2 extends tela {
         resetarInfos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Código para redirecionar para a página "aba1.java"
                 Aba1 aba1 = new Aba1();
                 aba1.exibir();
 
-                // Fechar a janela atual (Aba2)
                 frame.dispose();
             }
         });
-
-
         // posicionando labels e inputs
         despesaLabel.setBounds(50, 120, 150, 30);
         inputDespesa.setBounds(50, 150, 300, 30);
@@ -108,7 +103,6 @@ class Aba2 extends tela {
         data_gasto.setBounds(50, 390 , 300,30);
         botaoSalvar.setBounds(50,450,100,30);
         botaoContinuar.setBounds(200,450,150,30);
-
 
         editarCateg.addActionListener(new ActionListener() {
             @Override
@@ -147,12 +141,7 @@ class Aba2 extends tela {
                             aba2.exibir();
                         }
 
-
-
-
-
                     }});
-
 
                 Voltar.addActionListener(new ActionListener() {
                     @Override
@@ -160,11 +149,6 @@ class Aba2 extends tela {
                        frame.dispose();
                         Aba2 aba2 = new Aba2(nome,renda);
                         aba2.exibir();
-
-
-
-
-
 
                     }});
 
@@ -179,13 +163,7 @@ class Aba2 extends tela {
 
                         add(addCategoria);
 
-                // exibindo a tela
                 frame.setVisible(true);
-
-
-
-
-
 
             }
         });
@@ -197,11 +175,6 @@ class Aba2 extends tela {
                 String nome = inputDespesa.getText();
                 String categoria = (String) categoriaComboBox.getSelectedItem();
                 ArrayList<Object> infos = new ArrayList<>();
-
-
-
-
-
 
                 try {
 
@@ -222,8 +195,6 @@ class Aba2 extends tela {
                         inputDespesa.setText("");
                         inputGasto.setText("");
                         data_gasto.setText("dd/MM/yyyy");
-
-
 
                     }
                     else if(renda < Float.parseFloat(gasto)){
@@ -281,7 +252,6 @@ class Aba2 extends tela {
         telaSeguinte.add(botaoContinuar);
         telaSeguinte.add(data_gastoLabel);
         telaSeguinte.add(data_gasto);
-
 
         frame.getContentPane().
 
