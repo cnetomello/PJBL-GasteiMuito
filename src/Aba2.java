@@ -258,7 +258,7 @@ class Aba2 extends tela {
                     JOptionPane.showMessageDialog(null, "Voce deve lancar no minimo uma despesa");
                 }}
                 else{
-                    Aba3 aba3 = new Aba3(informacoes , nome ,renda);
+                    Aba3 aba3 = new Aba3(informacoes , nome ,renda,c);
                     aba3.exibir();
                     frame.dispose();
                 }
