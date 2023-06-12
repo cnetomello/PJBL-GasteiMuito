@@ -78,17 +78,26 @@ class Aba2 extends tela {
         // adicionando a menubar
         JMenuBar menuBar = new JMenuBar();
         JMenu menu1 = new JMenu("Menu");
-        JMenuItem editarInfos = new JMenuItem("Editar informações");
         JMenuItem editarCateg = new JMenuItem("Adicionar categorias");
         JMenuItem resetarInfos = new JMenuItem("Resetar informações");
-        menu1.add(editarInfos);
         menu1.add(editarCateg);
         menu1.add(resetarInfos);
         menuBar.add(menu1);
         frame.setJMenuBar(menuBar);
 
 
-        
+        resetarInfos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Código para redirecionar para a página "aba1.java"
+                Aba1 aba1 = new Aba1();
+                aba1.exibir();
+
+                // Fechar a janela atual (Aba2)
+                frame.dispose();
+            }
+        });
+
         // posicionando labels e inputs
         despesaLabel.setBounds(50, 120, 150, 30);
         inputDespesa.setBounds(50, 150, 300, 30);
