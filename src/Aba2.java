@@ -54,7 +54,6 @@ class Aba2 extends tela {
         frame.setLocationRelativeTo(null);
 
 
-
         String[] categorias = Arrays.stream(c.getCategorias().toArray())
                 .map(Object::toString)
                 .toArray(String[]::new);
@@ -75,15 +74,21 @@ class Aba2 extends tela {
         botaoContinuar.setFont(new Font("Arial", Font.BOLD, 20));
         botaoContinuar.setForeground(Color.white);
         botaoContinuar.setBackground(Color.blue);
+
         // adicionando a menubar
         JMenuBar menuBar = new JMenuBar();
         JMenu menu1 = new JMenu("Menu");
+        JMenuItem editarInfos = new JMenuItem("Editar informações");
         JMenuItem editarCateg = new JMenuItem("Adicionar categorias");
+        JMenuItem resetarInfos = new JMenuItem("Resetar informações");
+        menu1.add(editarInfos);
         menu1.add(editarCateg);
+        menu1.add(resetarInfos);
         menuBar.add(menu1);
         frame.setJMenuBar(menuBar);
 
 
+        
         // posicionando labels e inputs
         despesaLabel.setBounds(50, 120, 150, 30);
         inputDespesa.setBounds(50, 150, 300, 30);
